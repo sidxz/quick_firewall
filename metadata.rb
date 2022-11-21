@@ -1,9 +1,9 @@
 name 'quick_firewall'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'SACNET TAMU'
+maintainer_email 'sidxz@outlook.com'
 license 'All Rights Reserved'
 description 'Installs/Configures quick_firewall'
-version '1.0.0'
+version '0.1.0'
 chef_version '>= 16.0'
 
 # The `issues_url` points to the location where issues for this cookbook are
