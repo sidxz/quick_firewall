@@ -137,4 +137,5 @@ This cookbook takes the path where it relies more on the existing cli firewall t
 
 For an advanced firewall configuration, please have a look at the [firewall](https://github.com/sous-chefs/firewall/) cookbook by sous-chef.
 
-The cookbook comes as is without any warranty.
+## Contribution
+The cookbook comes as is without any warranty. Feel free to contribute.
