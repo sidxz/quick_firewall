@@ -18,7 +18,7 @@ property :allow_from_ip,
           default: '',
           description: 'UFW allow from IP or IP range'
 
-property :allow_from_zone,
+property :zone,
           String,
           default: '',
           description: 'Firewalld allow from specific zone. The Zone must exist'
@@ -37,9 +37,9 @@ action :create do
     cmd = "firewall-cmd --add-service=#{new_resource.service_name} "
     check = 'firewall-cmd --list-services '
 
-    if new_resource.allow_from_zone != ''
-      cmd.concat("--zone=#{new_resource.allow_from_zone} ")
-      check.concat("--zone=#{new_resource.allow_from_zone} ")
+    if new_resource.zone != ''
+      cmd.concat("--zone=#{new_resource.zone} ")
+      check.concat("--zone=#{new_resource.zone} ")
     end
 
     cmd.concat('--permanent ')

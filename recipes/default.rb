@@ -8,14 +8,21 @@ firewall_install 'default' do
   action :install
 end
 
-# Example
-# firewall_open_service 'https' do
-#   service_name 'https'
-#   action :create
-# end
-
 firewall_open_port '80' do
   port 80
   protocol 'tcp'
   action :create
 end
+
+firewalld_zone 'snet_private' do
+  source '9.9.9.0/24'
+  action :create
+end
+
+# Example
+firewall_open_service 'https' do
+  service_name 'https'
+  zone 'snet_private'
+  action :create
+end
+
