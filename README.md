@@ -48,11 +48,11 @@ firewall_install 'default' do
   action :install
 end
 ```
-This would keep the ssh port 22 open as an default action.
+This would keep the ssh port 22 open as a default action.
 To preven this set 
 `default['quick_firewall']['open_ssh'] = false`
 
-### Oppening a port
+### Opening a port
 The most basic way to open port 80 would be
 ```
 firewall_open_port '80' do
@@ -78,8 +78,8 @@ where
 * __source__ An IP or a subnet from where the request will be allowed. Debian family only will be ignored in RHEL.
 * __zone__ The firewall zone to use. Note RHEL Family only, will be ignored in Debian
 
-### Oppening a service
-Thoug we recommend to use the `firewall_open_port` resource, services can be oppened by this resource.
+### Opening a service
+Though we recommend to use the `firewall_open_port` resource, services can be opened by this resource.
 Example to open https.
 ```
 firewall_open_service 'https' do
@@ -97,7 +97,7 @@ firewall_open_service  'name' do
 end
 ```
 where
-* __service_name__ is the service that is required to be open. Example ssh, https, ldap etc
+* __service_name__ is the service that is required to be open. Examples ssh, https, ldap etc
 * __ufw_port_track__ (Debian ONLY) Ignored in RHEL, is the port of the corresponding service. 22 for SSH etc.
 * __zone__ The firewall zone to use. Note RHEL Family only, will be ignored in Debian
 
@@ -128,12 +128,12 @@ end
 ```
 where
 * __name__ is the name of the zone to create
-* __source__ is the source ip or network
-* __interface__ if required, create the zone for a specific interfce.
+* __source__ is the source IP or network
+* __interface__ if required, create the zone for a specific interface.
 
 
 ## Advanced Firewall
-This cookbook takes the path where it relies more on the existing cli firewall tools `firewall-cmd` and `ufw` so that it can be adapted rapidly with latest os releases though compromising on granular controls but usefull enough for most basic scenarios.
+This cookbook takes the path where it relies more on the existing CLI firewall tools `firewall-cmd` and `ufw` so that it can be adapted rapidly with the latest OS releases though compromising on granular controls but useful enough for most basic scenarios.
 
 For an advanced firewall configuration, please have a look at the [firewall](https://github.com/sous-chefs/firewall/) cookbook by sous-chef.
 
