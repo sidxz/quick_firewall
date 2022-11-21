@@ -14,7 +14,7 @@ end
 
 # If set to true in attributes, open ports for commonly used services
 # default is set to false
-if node['quick_firewall']['open_http'] do
+if node['quick_firewall']['open_http']
   firewall_open_port '80' do
     port 80
     protocol 'tcp'
@@ -22,7 +22,7 @@ if node['quick_firewall']['open_http'] do
   end
 end
 
-if node['quick_firewall']['open_https'] do
+if node['quick_firewall']['open_https']
   firewall_open_service 'https' do
     service_name 'https'
     ufw_port_track '443'
