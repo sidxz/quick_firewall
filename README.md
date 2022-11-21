@@ -95,8 +95,7 @@ firewall_open_service 'https' do
 Resource Definition:
 ```
 firewall_open_service  'name' do
-  service_name        Integer
-  ufw_port_track      String
+  service_name        String
   zone                String
   action              Symbol
 end
@@ -108,4 +107,30 @@ where
 
 ### Creating a firewalld zone
 This resource will create a firewall zone in the RedHat Family.
-
+Example 1
+```
+firewall_zone 'xyz-private' do
+    source '10.10.10.0/24'
+    action :create
+  end
+```
+Example 2
+```
+firewall_zone 'xyz-private' do
+    interface 'eth-2'
+    action :create
+  end
+```
+Resource Definition:
+```
+firewall_zone  'name' do
+  name          String
+  source        String
+  interface     String
+  action        Symbol
+end
+```
+where
+* __name__ is the name of the zone to create
+* __source__ is the source ip or network
+* __interface__ if required, create the zone for a specific interfce.
