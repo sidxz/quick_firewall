@@ -26,4 +26,9 @@ action :install do
     end
   end
 
+  firewall_open_service 'ssh' do
+    service_name 'ssh'
+    only_if "#{node['quick_firewall']['open_ssh']}"
+    action :create
+  end
 end

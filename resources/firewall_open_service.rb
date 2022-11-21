@@ -1,16 +1,12 @@
 # This resource would open a firewall port
 unified_mode true
 
-provides :firewall_open_port,
+provides :firewall_open_service,
           os: 'linux'
 
-property :port,
-          Integer,
-          description: 'Specify the port to open'
-
-property :protocol,
+property :service_name,
           String,
-          description: 'Specify the protocol to open'
+          description: 'Specify the service to open'
 
 property :comment,
           String,
@@ -38,8 +34,8 @@ action :create do
       not_if       'systemctl status firewalld | grep "active (running)"'
     end
 
-    cmd = "firewall-cmd --add-port=#{new_resource.port}/#{new_resource.protocol} "
-    check = 'firewall-cmd --list-ports '
+    cmd = "firewall-cmd --add-service=#{new_resource.service_name} "
+    check = 'firewall-cmd --list-services '
 
     if new_resource.allow_from_zone != ''
       cmd.concat("--zone=#{new_resource.allow_from_zone} ")
@@ -48,11 +44,10 @@ action :create do
 
     cmd.concat('--permanent ')
     cmd.concat('&& firewall-cmd --reload')
-    check.concat("| grep -w #{new_resource.port}/#{new_resource.protocol}")
+    check.concat("| grep -w #{new_resource.service_name}")
 
     execute "firewalld-open-#{new_resource.name}" do
       command cmd
-      only_if 'systemctl status firewalld | grep "active (running)"'
       not_if check
     end
 

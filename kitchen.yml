@@ -16,13 +16,22 @@ provisioner:
   ## see the Chef documentation for more details: https://docs.chef.io/workstation/config_yml_kitchen/
   #  product_name: chef
   #  product_version: 17
+  always_update_cookbooks: true
 
 verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-20.04
-  - name: centos-8
+  # - name: ubuntu-22.04
+  #   transport:
+  #     name: ssh
+  #     username: vagrant
+  #     password: vagrant
+  - name: oracle-9
+    transport:
+      name: ssh
+      username: vagrant
+      password: vagrant
 
 suites:
   - name: default
