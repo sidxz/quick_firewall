@@ -3,7 +3,7 @@ maintainer 'SACNET TAMU'
 maintainer_email 'sidxz@outlook.com'
 license 'All Rights Reserved'
 description 'Installs/Configures quick_firewall'
-version '0.1.2'
+version '0.1.3'
 chef_version '>= 16.0'
 
 # The `issues_url` points to the location where issues for this cookbook are
@@ -18,8 +18,7 @@ issues_url 'https://github.com/sidxz/quick_firewall/issues'
 #
 source_url 'https://github.com/sidxz/quick_firewall'
 
-
-supports         'centos', ">= 7.0"
-supports         'oracle', ">= 7.0"
-supports         'rhel',   ">= 7.0"
-supports         'ubuntu', ">= 14.04"
+supports 'oracle'
+supports 'centos'
+supports 'rhel'
+supports 'ubuntu'
