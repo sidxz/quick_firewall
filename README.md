@@ -3,11 +3,10 @@
 This cookbook is intended to configure basic firewall settings that are commonly used.
 The modules make use of firewalld or ufw to set the rules.
 
-PLEASE NOTE - The resource/providers in this cookbook are under development.
 
 ## Requirements
 
-- Chef Infra Client 15.5+
+- Chef Infra Client 16.0+
 
 ```
 depends 'quick_firewall'
