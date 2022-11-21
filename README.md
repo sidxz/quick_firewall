@@ -4,6 +4,8 @@ This cookbook is intended to configure basic firewall settings that are commonly
 
 The modules make use of firewalld or ufw to set the rules.
 
+This cookbook is not intended to provide complete OS Firewall wrapping via resources, but instead provides an easy way to add or remove simple rules. It is currently mainly used for host-based firewalls in Debian and RHEL Family.
+
 
 ## Requirements
 
