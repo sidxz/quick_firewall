@@ -27,11 +27,11 @@ platforms:
       name: ssh
       username: vagrant
       password: vagrant
-  # - name: oracle-9
-  #   transport:
-  #     name: ssh
-  #     username: vagrant
-  #     password: vagrant
+  - name: oracle-9
+    transport:
+      name: ssh
+      username: vagrant
+      password: vagrant
 
 suites:
   - name: default
