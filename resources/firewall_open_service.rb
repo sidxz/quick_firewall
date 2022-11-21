@@ -8,15 +8,14 @@ property :service_name,
           String,
           description: 'Specify the service to open'
 
+property :ufw_port_track,
+          String,
+          description: 'Specify the port/protocol to keep track in ufw'
+
 property :comment,
           String,
           default: '',
           description: 'Comment to add on UFW'
-
-property :allow_from_ip,
-          String,
-          default: '',
-          description: 'UFW allow from IP or IP range'
 
 property :zone,
           String,
@@ -52,9 +51,21 @@ action :create do
     end
 
   when 'ubuntu'
-    log 'message' do
-      message 'A message add to the log.'
-      level :info
+    log 'firewall_unconfigured' do
+      level        :fatal
+      message      'Cannot open ports as the firewall service is not running'
+      not_if       'ufw status | grep -w "active"'
+    end
+
+    cmd = 'ufw allow '
+    check = 'ufw status '
+
+    cmd.concat("#{new_resource.service_name} ")
+    check.concat("| grep -w '#{new_resource.ufw_port_track}' ")
+
+    execute "ufw-open-#{new_resource.name}" do
+      command cmd
+      not_if check
     end
 
   end

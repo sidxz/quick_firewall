@@ -22,16 +22,16 @@ verifier:
   name: inspec
 
 platforms:
-  # - name: ubuntu-22.04
-  #   transport:
-  #     name: ssh
-  #     username: vagrant
-  #     password: vagrant
-  - name: oracle-9
+  - name: ubuntu-22.04
     transport:
       name: ssh
       username: vagrant
       password: vagrant
+  # - name: oracle-9
+  #   transport:
+  #     name: ssh
+  #     username: vagrant
+  #     password: vagrant
 
 suites:
   - name: default
