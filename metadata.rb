@@ -17,3 +17,9 @@ issues_url 'https://github.com/sidxz/quick_firewall/issues'
 # a Supermarket.
 #
 source_url 'https://github.com/sidxz/quick_firewall'
+
+
+supports         'centos', ">= 7.0"
+supports         'oracle', ">= 7.0"
+supports         'rhel',   ">= 7.0"
+supports         'ubuntu', ">= 14.04"
