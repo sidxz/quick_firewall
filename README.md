@@ -42,7 +42,7 @@ This cookbook comes with four resources:
 ## Advanced Firewall
 This cookbook takes the path where it relies more on the existing cli firewall tools `firewall-cmd` and `ufw` so that latest os versions can be supported out of the box compromising on granular controls but usefull enough for most scenarios.
 
-For advanced firewall configuration, please have a look at the ![firewall](https://github.com/sous-chefs/firewall/) cookbook by sous-chef.
+For advanced firewall configuration, please have a look at the [firewall](https://github.com/sous-chefs/firewall/) cookbook by sous-chef.
 
 ## Usage
 ### Installation
@@ -53,7 +53,8 @@ firewall_install 'default' do
 end
 ```
 This would keep the ssh port 22 open as an default action.
-To preven this set `default['quick_firewall']['open_ssh'] = false`
+To preven this set 
+`default['quick_firewall']['open_ssh'] = false`
 
 ### Oppening a port
 The most basic way to open port 80 would be
@@ -72,7 +73,7 @@ firewall_open_port  'name' do
   protocol            String
   source              String
   zone                TrueClass, FalseClass
-  action              Symbol, :hard_run if not specified
+  action              Symbol
 end
 ```
 where
@@ -80,3 +81,31 @@ where
 * __protocol__ is the protocol that the port uses, generally, tcp or udp
 * __source__ An IP or a subnet from where the request will be allowed. Debian family only will be ignored in RHEL.
 * __zone__ The firewall zone to use. Note RHEL Family only, will be ignored in Debian
+
+### Oppening a service
+Thoug we recommend to use the `firewall_open_port` resource, services can be oppened by this resource.
+Example to open https.
+```
+firewall_open_service 'https' do
+    service_name 'https'
+    ufw_port_track '443'
+    action :create
+  end
+```
+Resource Definition:
+```
+firewall_open_service  'name' do
+  service_name        Integer
+  ufw_port_track      String
+  zone                String
+  action              Symbol
+end
+```
+where
+* __service_name__ is the service that is required to be open. Example ssh, https, ldap etc
+* __ufw_port_track__ (Debian ONLY) Ignored in RHEL, is the port of the corresponding service. 22 for SSH etc.
+* __zone__ The firewall zone to use. Note RHEL Family only, will be ignored in Debian
+
+### Creating a firewalld zone
+This resource will create a firewall zone in the RedHat Family.
+
