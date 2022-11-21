@@ -1,6 +1,7 @@
 # Quick Firewall Chef Cookbook
 
 This cookbook is intended to configure basic firewall settings that are commonly used.
+
 The modules make use of firewalld or ufw to set the rules.
 
 
@@ -48,7 +49,7 @@ firewall_install 'default' do
 end
 ```
 This would keep the ssh port 22 open as a default action.
-To preven this set 
+To prevent this set 
 `default['quick_firewall']['open_ssh'] = false`
 
 ### Opening a port
