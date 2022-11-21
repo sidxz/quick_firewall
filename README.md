@@ -37,12 +37,8 @@ This cookbook comes with four resources:
 ## Attributes
 
 - `default['quick_firewall']['open_ssh'] = true`, set true to open port 22 for SSH when the default recipe runs
-
-
-## Advanced Firewall
-This cookbook takes the path where it relies more on the existing cli firewall tools `firewall-cmd` and `ufw` so that latest os versions can be supported out of the box compromising on granular controls but usefull enough for most scenarios.
-
-For advanced firewall configuration, please have a look at the [firewall](https://github.com/sous-chefs/firewall/) cookbook by sous-chef.
+- `default['quick_firewall']['open_http'] = false`, set true to open port 80 for http when the default recipe runs
+- `default['quick_firewall']['open_https'] = false`, set true to open port 443 for https when the default recipe runs
 
 ## Usage
 ### Installation
@@ -134,3 +130,11 @@ where
 * __name__ is the name of the zone to create
 * __source__ is the source ip or network
 * __interface__ if required, create the zone for a specific interfce.
+
+
+## Advanced Firewall
+This cookbook takes the path where it relies more on the existing cli firewall tools `firewall-cmd` and `ufw` so that it can be adapted rapidly with latest os releases though compromising on granular controls but usefull enough for most basic scenarios.
+
+For an advanced firewall configuration, please have a look at the [firewall](https://github.com/sous-chefs/firewall/) cookbook by sous-chef.
+
+The cookbook comes as is without any warranty.
